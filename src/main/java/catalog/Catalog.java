@@ -37,7 +37,7 @@ public class Catalog {
         if (page == 0) {
             throw new IllegalArgumentException("No page");
         }
-        return Math.round((double)page / item * 10) / 10;
+        return Math.round((double)page / item * 10.0) / 10.0;
     }
 
     public List<CatalogItem> findByCriteria(SearchCriteria searchCriteria) {
@@ -52,7 +52,6 @@ public class Catalog {
     }
 
     private boolean isProper(CatalogItem ci, SearchCriteria searchCriteria) {
-        boolean result;
         for (Feature actual : ci.getFeatures()) {
             if (!searchCriteria.hasTitle()) {
                 if (actual.getContributors().contains(searchCriteria.getContributor())) {
